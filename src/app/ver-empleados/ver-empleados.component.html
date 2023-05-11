@@ -1,0 +1,144 @@
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h1>{{ titulo }}</h1>
+                <span *ngIf="submitted && createEmpleado.invalid" class="badge badge-danger">Todos los campos son obligatorios</span>
+                <div class="col-md-12">
+
+                    <form class="mt-4" [formGroup]="createEmpleado" aria-label="Disabled input example" disabled (ngSubmit)="verEmpleados()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="example-full-width" cellspacing="0">
+                                    <tr>
+                                        <td>
+
+                                            <div class="form-floating mb-3">
+                                                <input type="text" formControlName="nombre" class="form-control" id="floatingInput" aria-label="Disabled input example" disabled>
+                                                <label for="floatingInput">Nombre</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-3">
+
+                                <!-- <button class="btn1" mat-raised-button color="primary" (click)="activarDatos()">Administrativa</button> -->
+                                <button type="button" class="btn2 btn btn-primary" (click)="mostrarDatos()" disabled>Administrativa</button>
+
+                            </div>
+                            <div class="col-md-3">
+
+                                <button type="button" class="btn1 btn btn-primary" (click)="mostrarDatos1()" disabled>Tecnologia</button>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Fecha de nacimiento</mat-label>
+                                    <input matInput formControlName="fechaNacimiento" [max]="maxDate" [matDatepicker]="picker1" disabled>
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+
+                            </div>
+                            <div *ngIf="select1" class="select col-md-3">
+                                <select class="form-select1" formControlName="Administrativa" disabled>
+                              <option value="Recursos humanos" (click)="ocultarInput()">Recursos humanos</option>
+                              <option value="Fundador y CEO"(click)="mostrarInput=!mostrarInput">Fundador y CEO</option>
+
+
+                            </select>
+                            </div>
+                            <div *ngIf="select2" class="select col-md-3">
+                                <select class="form-select1" formControlName="Tecnologia" disabled>
+                              <option value="Diseñador">Diseñador</option>
+                              <option value="Programador">Programador</option>
+                            </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <select class="form-select" formControlName="selectPais" aria-label="Default select example" disabled>
+                              <option selected>Pais</option>
+                              <option value="España">"España</option>
+                              <option value="2">Francia</option>
+                              <option value="3">Three</option>
+                            </select>
+                            </div>
+
+                            <div *ngIf="mostrarInput" class="col-md-6">
+
+                                <div class="form">
+                                    <input type="number" [(ngModel)]="valor" placeholder="0%" formControlName="porcentC">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class=" col-md-6 ">
+
+                            <table class="example-full-width " cellspacing="0 ">
+                                <tr>
+                                    <td>
+                                        <div class="form-floating mb-3 mt-3">
+                                            <input type="text" formControlName="nombreUser" class="form-control" id="floatingInput" disabled>
+                                            <label for="floatingInput">Nombre de usuario</label>
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Fecha de contratacion</mat-label>
+                                    <input matInput formControlName="fechaContratacion" [matDatepicker]="picker" disabled>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6 mt-5">
+                            <mat-slide-toggle formControlName="active" disabled>Activo</mat-slide-toggle>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <button mat-mini-fab color="primary" class="btn4 col-md-6" [routerLink]="['/lista-empleados']">
+                        <mat-icon>navigate_before</mat-icon>
+
+                      </button>
+                                <span class="mr-5">Volver</span>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <button type="submit" class="btn3 btn btn-primary" disabled>Guardar</button>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
